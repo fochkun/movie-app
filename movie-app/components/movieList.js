@@ -2,28 +2,12 @@ import React from 'react'
 
 class MovieList extends React.Component{
 
-  constructor(props){
-    super(props)
-    this.state={
-      count:0
-    }
-  }
-
-  increment = () =>{
-    this.setState({count:this.state.count+1});
-  }
-
-  decrement = () =>{
-    this.setState({count:this.state.count-1});
-  }
   
   render(){
     return (
       <React.Fragment>
         <div>
-          <button onClick={this.increment} className="btn btn-primary">Inctement number</button>
-          <button onClick={this.decrement} className="btn btn-primary">Dectement number</button>
-          <div>count {this.state.count}</div>
+          <div>count {this.props.count}</div>
         </div>
         <div className="col-lg-4 col-md-6 mb-4">
           <div className="card h-100">
