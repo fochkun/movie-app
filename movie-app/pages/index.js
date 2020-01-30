@@ -1,22 +1,16 @@
-import Link from 'next/link'
-import Head from 'next/head'
-import Nav from '../components/nav'
-import SideMenu from '../components/sideMenu'
-import Carousel from '../components/Carousel'
-import MovieList from '../components/MovieList'
+import Head from 'next/head';
+import Nav from '../components/nav';
+import SideMenu from '../components/sideMenu';
+import Carousel from '../components/Carousel';
+import MovieList from '../components/MovieList';
 import Footer from '../components/footer';
-import { useState } from 'react'
+import { getMovies } from '../actions/index'
+
+
 
 const Home = () => {
-  const [count, setCount] = useState(0);
 
-  const increment = () =>{
-    setCount(count+1);
-  }
-
-  const decrement = () =>{
-    setCount(count-1);
-  }
+  const movies = getMovies();
 
   return (
     <div>
@@ -31,20 +25,17 @@ const Home = () => {
 
       <div className="home-page">
         <div className="container">
-        <button onClick={increment} className="btn btn-primary">Inctement number</button>
-        <button onClick={decrement} className="btn btn-primary">Dectement number</button>
           <div className="row">
             <div className="col-lg-3">
               <SideMenu
                 appName = {'Movie DB'}
-                clickHandler={()=>{console.log('hello world')}}
-                count={count}
               />
             </div>
             <div className="col-lg-9">
               <Carousel />
               <div className="row">
-                <MovieList count={count}/>
+                <MovieList 
+                movies = {movies}/>
               </div>
             </div>
           </div>
