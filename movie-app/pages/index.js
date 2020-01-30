@@ -5,12 +5,17 @@ import Carousel from '../components/Carousel';
 import MovieList from '../components/MovieList';
 import Footer from '../components/footer';
 import { getMovies } from '../actions/index'
+import { useState } from 'react';
 
 
 
 const Home = () => {
 
-  const movies = getMovies();
+  const [movies, setMovies] = useState([]);
+
+  getMovies().then((movies)=>{
+    setMovies(movies);
+  })
 
   return (
     <div>
