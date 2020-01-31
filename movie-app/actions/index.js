@@ -32,10 +32,11 @@ const MOVIE_DATA = [
 
   export const getMovies = () => {
 
-    return new Promise((resolve)=>{
+    return new Promise((resolve, reject)=>{
         setTimeout(()=>{
             resolve(MOVIE_DATA);
-        }, 2000);
+            // reject('have no movie data');
+        }, 15);
     });
       
   }
