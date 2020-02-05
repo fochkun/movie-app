@@ -44,6 +44,12 @@ const MOVIE_DATA = [
   }
 ];
 
+const CATEGORY_DATA = [
+  {id: '1', name:'drama'},
+  {id: '2', name:'action'},
+  {id: '3', name:'adventure'},
+  {id: '4', name:'historical'},
+];
 
 export const getMovies = () => {
 
@@ -63,4 +69,13 @@ export const getMovieById = (id) => {
     console.log('movie ',movie);
     setTimeout(() => { resolve(movie)}, 50);
   })
+}
+
+export const getCategories = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(CATEGORY_DATA);
+      // reject('have no movie data');
+    }, 15);
+  });
 }
