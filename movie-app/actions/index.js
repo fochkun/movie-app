@@ -1,5 +1,5 @@
 
-const MOVIE_DATA = [
+let MOVIE_DATA = [
   {
     id: '1',
     name: 'The Shawshank Redemption',
@@ -52,14 +52,22 @@ const CATEGORY_DATA = [
 ];
 
 export const getMovies = () => {
-
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(MOVIE_DATA);
       // reject('have no movie data');
     }, 15);
   });
+}
 
+export const createMovie = (movie) => {
+  return new Promise((resolve, reject) => {
+    MOVIE_DATA.push(movie);
+    setTimeout(() => {
+      resolve(MOVIE_DATA);
+      // reject('have no movie data');
+    }, 15);
+  });
 }
 
 export const getMovieById = (id) => {
