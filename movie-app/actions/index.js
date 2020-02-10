@@ -62,6 +62,7 @@ export const getMovies = () => {
 
 export const createMovie = (movie) => {
   return new Promise((resolve, reject) => {
+    movie.id = ''+(MOVIE_DATA.length+1);
     MOVIE_DATA.push(movie);
     setTimeout(() => {
       resolve(MOVIE_DATA);
