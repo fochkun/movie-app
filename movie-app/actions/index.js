@@ -34,3 +34,7 @@ export const getCategories = () => {
     }, 15);
   });
 }
+
+export const deleteMovie = (id) => {
+  return Axios.delete(`${BASE_URL}/api/v1/movies/${id}`).then(res=>res.data);
+}
