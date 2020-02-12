@@ -18,25 +18,12 @@ export const getMovies = () => {
 }
 
 export const createMovie = (movie) => {
-  return new Promise((resolve, reject) => {
-    movie.id = '' + (MOVIE_DATA.length + 1);
-    MOVIE_DATA.push(movie);
-    setTimeout(() => {
-      resolve(MOVIE_DATA);
-      // reject('have no movie data');
-    }, 15);
-  });
+  movie.id = Math.random().toString(32).substr(2,5);
+  return Axios.post(`${BASE_URL}/api/v1/movies`,movie).then(res=>res.data);
 }
 
 export const getMovieById = (id) => {
   return Axios.get(`${BASE_URL}/api/v1/movies/${id}`).then(res=>res.data);
-
-  // return new Promise((resolve) => {
-  //   const movieIndex = MOVIE_DATA.findIndex(movie => movie.id === id);
-  //   const movie = MOVIE_DATA[movieIndex];
-  //   console.log('movie ', movie);
-  //   setTimeout(() => { resolve(movie) }, 50);
-  // })
 }
 
 export const getCategories = () => {
