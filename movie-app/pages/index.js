@@ -9,10 +9,17 @@ import { useState } from 'react';
 const Home = (props) => {
 
   const {images, categories, movies } = props;
-  const [filter,setFilter] = useState('');
+  const [filter,setFilter] = useState('all');
   
   const changeCategory = category => {
     setFilter(category);
+}
+
+const filterMovies = movies => {
+  if (filter === 'all'){
+    return movies;
+  }
+  return movies.filter((movie)=>movie.genre && movie.genre.includes(filter));
 }
 
   return (
@@ -33,7 +40,7 @@ const Home = (props) => {
                 <h1>Displaing {filter} movies</h1>
               <div className="row">
                 <MovieList 
-                movies = {movies || []}/>
+                movies = {filterMovies(movies) || []}/>
               </div>
             </div>
           </div>
