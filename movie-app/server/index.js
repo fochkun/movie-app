@@ -52,20 +52,25 @@ app.prepare().then(() => {
             if (err) {
                 return res.status(422).send(err);
             }
-            return res.json('Movie added');
+            return res.json('Movie deleted');
         });
     });
 
-    //   server.get('/faq', (req,res)=>{
-    //       res.send(`
-    //         <html>
-    //             <head>
-    //             </head>
-    //             <body>
-    //                 <h1>Hello World</h1>
-    //         </body></html>
-    //         `);
-    //   });
+    server.patch('/api/v1/movies/:id', (req, res) => {
+        const { id } = req.params;
+        const movie = req.body;
+
+        const movieIndex = moviesData.findIndex(m => m.id === movie.id);
+        moviesData[movieIndex] = movie;
+        const pathToFile = path.join(__dirname, filePath);
+        const stringifiedData = JSON.stringify(moviesData, null, 1);
+        fs.writeFile(pathToFile, stringifiedData, (err) => {
+            if (err) {
+                return res.status(422).send(err);
+            }
+            return res.json(movie);
+        });
+    });
 
     server.get('*', (req, res) => {
         return handle(req, res);

@@ -1,5 +1,6 @@
 import MovieCreateForm from "../../../components/movieCreateForm";
-import { getMovieById } from "../../../actions";
+import { getMovieById, updateMovie } from "../../../actions";
+import Router from "next/router";
 
 
 class EditMovie extends React.Component {
@@ -10,23 +11,12 @@ class EditMovie extends React.Component {
         return {movie};
     }
 
-    // state = {
-    //     movie: {
-    //         name: '',
-    //         description: '',
-    //         rating: '',
-    //         image: '',
-    //         cover: '',
-    //         longDesc: '',
-    //     }
-    // }
-
-    // componentDidMount() {
-    //     const { id } = this.props.query;
-    //     getMovieById(id).then(movie=>{
-    //        this.setState({movie});
-    //     })
-    // }
+    handleUpdateMovie(movie) {
+        updateMovie(movie).then((movie) => {
+        //   router.push('/');
+            Router.push(`/movies/${movie.id}`)
+        })
+      }
     
     render() {
         const {movie} = this.props;
@@ -34,7 +24,10 @@ class EditMovie extends React.Component {
         return (
             <div className="container">
                 <h1>Edit the Movie</h1>
-                <MovieCreateForm initialData={movie}/>
+                <MovieCreateForm 
+                    submitButton="Update"
+                    handleFormSubmit={this.handleUpdateMovie} 
+                    initialData={movie}/>
             </div>
         )
     }

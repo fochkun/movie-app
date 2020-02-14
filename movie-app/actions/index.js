@@ -38,3 +38,7 @@ export const getCategories = () => {
 export const deleteMovie = (id) => {
   return Axios.delete(`${BASE_URL}/api/v1/movies/${id}`).then(res=>res.data);
 }
+
+export const updateMovie = (movie) => {
+  return Axios.patch(`${BASE_URL}/api/v1/movies/${movie.id}`,movie).then(res=>res.data);
+}
