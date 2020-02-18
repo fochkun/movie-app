@@ -1,0 +1,12 @@
+POST http://localhost:3000/api/v1/posts HTTP/1.1
+content-type: application/json
+
+{
+    "id": "123123123",
+    "title": "testing endpoint",
+    "body": "testing endpoint"
+}
+
+###
+
+GET http://localhost:3000/api/v1/posts 

@@ -43,3 +43,7 @@ export const deleteMovie = (id) => {
 export const updateMovie = (movie) => {
   return Axios.patch(`${BASE_URL}/api/v1/movies/${movie.id}`,movie).then(res=>res.data);
 }
+
+export const getPosts = () => {
+  return Axios.get(`${BASE_URL}/api/v1/posts`).then(res=>res.data);
+}
